@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% assign current_tag = page.url | split: '/' | last %}
+
+<h1 style="text-align:center;">Tag: {{ current_tag }}</h1>
+
+<ul style="max-width: 700px; margin: 2rem auto; line-height: 1.6;">
+  {% assign filtered = site.data.papers | where: "tag", current_tag %}
+  {% assign sorted = filtered | sort: 'current_name' %}
+  {% for paper in sorted %}
+    <li>
+      <a href="/pdfs/{{ paper.current_name }}">{{ paper.current_name | replace: '-', ' ' | capitalize }}</a> — <em>{{ paper.type }}</em>
+    </li>
+  {% endfor %}
+</ul>
