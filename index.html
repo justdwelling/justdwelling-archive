@@ -3,6 +3,58 @@ layout: default
 title: Just Dwelling Archive
 ---
 
+<style>
+  .page-wrap { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+  .hero { margin-bottom: 2rem; }
+  .hero h1 { margin: 0 0 .25rem; font-size: clamp(1.6rem, 3vw, 2rem); }
+  .hero p { color: #666; margin: 0; }
+  .list { display: grid; gap: 12px; }
+  .item {
+    border: 1px solid #e5e5e5; border-radius: 10px; padding: 14px 16px;
+    background: #fff;
+  }
+  .item a.title { font-weight: 600; text-decoration: none; }
+  .item a.title:hover { text-decoration: underline; }
+  .meta { color: #666; font-size: .95rem; margin-top: 4px; }
+  .actions { margin-top: 8px; }
+  .btn {
+    display: inline-block; padding: 6px 10px; border-radius: 8px;
+    border: 1px solid #ddd; text-decoration: none; font-size: .9rem;
+  }
+  .btn:hover { background: #f6f6f6; }
+</style>
+
+<div class="page-wrap">
+  <div class="hero">
+    <h1>Just Dwelling Archive</h1>
+    <p>Publications, reports, and other outputs — all in one place.</p>
+  </div>
+
+  <div class="list">
+    {% assign papers = site.data.papers %}
+    {% for paper in papers %}
+      <div class="item">
+        <!-- Link to the PDF in /pdfs -->
+        <a class="title" href="{{ site.baseurl }}/pdfs/{{ paper.file | escape }}" target="_blank" rel="noopener">
+          {{ paper.file | remove: '.pdf' }}
+        </a>
+        <div class="meta">
+          <em>{{ paper.type }}</em>
+          {% if paper.tags and paper.tags.size > 0 %}
+            — {% for tag in paper.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+          {% endif %}
+        </div>
+        <div class="actions">
+          <a class="btn" href="{{ site.baseurl }}/pdfs/{{ paper.file | escape }}" target="_blank" rel="noopener">Download PDF</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>---
+layout: default
+title: Just Dwelling Archive
+---
+
 <h1>Full Archive</h1>
 <ul>
   {% for paper in site.data.papers %}
