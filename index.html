@@ -34,7 +34,7 @@ title: Just Dwelling Archive
     {% assign papers = site.data.papers %}
     {% for paper in papers %}
       <div class="item">
-        <a class="title" href="{{ site.baseurl }}/pdfs/{{ paper.file | escape }}" target="_blank" rel="noopener">
+        <a class="title" href="{{ '/pdfs/' | append: paper.file | relative_url }}" target="_blank" rel="noopener">
           {{ paper.file | remove: '.pdf' }}
         </a>
         <div class="meta">
@@ -44,7 +44,7 @@ title: Just Dwelling Archive
           {% endif %}
         </div>
         <div class="actions">
-          <a class="btn" href="{{ site.baseurl }}/pdfs/{{ paper.file | escape }}" target="_blank" rel="noopener">Download PDF</a>
+          <a class="btn" href="{{ '/pdfs/' | append: paper.file | relative_url }}" target="_blank" rel="noopener">Download PDF</a>
         </div>
       </div>
     {% endfor %}
