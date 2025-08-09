@@ -4,3 +4,5 @@ _site
 .jekyll-metadata
 vendor
 So what zine.pdf
+.DS_Store
+_site/
